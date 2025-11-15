@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "thought": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tool_calls": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "args": {
+            "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "audio": {
+      "type": "string",
+      "minLength": 1
+    },
+    "plan": {
+      "type": "string"
+    },
+    "queries": {
+      "type": "array",
+      "items": {
+        "properties": {
+          "query": {
+            "type": "string"
+          },
+          "response": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  ,
+  "required": [
+    "thought",
+    "tool_calls",
+    "audio"
+  ]
+}

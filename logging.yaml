@@ -1,0 +1,46 @@
+version: 1
+formatters:
+  simple:
+    format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+handlers:
+  file:
+    class: logging.FileHandler
+    filename: .logs/main.log
+    level: DEBUG
+    formatter: simple
+    mode: w
+  root_handler:
+    class: logging.FileHandler
+    filename: .logs/errors.log
+    level: WARNING
+    formatter: simple
+    filters: [main]
+    mode: w
+  litellm_handler:
+    class: logging.FileHandler
+    filename: .logs/litellm.log
+    level: DEBUG
+    formatter: simple
+    mode: w
+filters:
+  FinAgent:
+    name: FinAgent
+  main:
+    name: __main__
+loggers:
+  FinAgent:
+    level: DEBUG
+    handlers: [file]
+    propagate: no
+  LiteLLM:
+    level: DEBUG
+    handlers: [litellm_handler]
+    propagate: no
+  app:
+    level: DEBUG
+    handlers: [file]
+    propagate: no
+root:
+  level: WARNING
+  handlers: [root_handler]
+  filters: [main]

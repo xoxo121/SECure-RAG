@@ -1,0 +1,44 @@
+self.document_template = lambda documents : f"""
+Here are the documents retrieved using the rag_tool (tool description is given below)
+
+{"\n\n".join([f"retrieved text ({i+1}) -> " + doc for i,doc in enumerate(documents)]) } """
+        
+        else: self.document_template = document_template
+
+        """ ********************** Document template definition ************************************** """
+
+                        #################################################################
+
+        """ ********************** Tool template definition ****************************************** """
+
+        if tools_template == None:
+
+            self.tools_template = lambda tools : f"""
+Here are the available tools and their description
+
+{"\n\n".join([tool._str_() for tool_name, tool in tools.items()])}
+
+These are the only available tools and Do not hallucinate any tools 
+"""
+
+        else : self.tools_template = tools_template
+
+        """ ********************** Tool template definition ************************************** """
+
+    
+    async def get_response(self, query : str, n_iters : int = 2):
+        
+        # getting the hyde tool
+        if "rag_tool" not in self.info_tools:
+            raise Exception(f""" Exception Raised at get response , 'hyde_rag_tool' key is not present in the tools 
+                            - Add this tool to search the document """)
+        
+        hyde_rag_tool = self.info_tools['rag_tool']
+        
+        # getting hyde reponse for the query
+        hyde_response_documents = await hyde_rag_tool.run(query = query, 
+                                                    top_k1 = 10, 
+                                                    top_k2 = 8, 
+                                                    n_similar = 2)
+        
+        llm_input = lambda query , math_tools, info_tools: f

@@ -1,0 +1,11 @@
+pathway[xpack-llm-local]
+litellm
+langchain
+aiohttp
+aiofiles
+docling 
+docling-core
+langchain_openai
+rapidocr_onnxruntime
+replicate
+langchain_community
