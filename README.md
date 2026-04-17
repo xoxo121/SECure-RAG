@@ -1,6 +1,9 @@
 # [Enhancing Financial RAG with Agentic AI and Multi-HyDE: A Novel Approach to Knowledge Retrieval and Hallucination Reduction](https://aclanthology.org/2025.finnlp-2.3/)
 
+This paper was accepted to **FinNLP 2025** and published in the **Proceedings of The 10th Workshop on Financial Technology and Natural Language Processing**, held in **Suzhou, China**, by the **Association for Computational Linguistics (ACL)**.
+
 We design **SECure RAG**, a framework for streamlining financial data analysis through agentic RAG. It leverages LLMs over both structured and unstructured data sources, using retrievers and tools to gather information from diverse, large-scale sources and process it to answer user queries.
+
 
 **Paper:** [ACL Anthology](https://aclanthology.org/2025.finnlp-2.3/)  
 **PDF:** [Read the paper](https://aclanthology.org/2025.finnlp-2.3.pdf)
